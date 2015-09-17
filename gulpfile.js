@@ -128,6 +128,7 @@ gulp.task('watch', ['default'], function() {
   var watchFiles = [
     'assets/styles/development/css/_vendor/*.css',
     'assets/styles/development/scss/*.scss',
+    'assets/styles/development/scss/_partials/*.scss',
     'assets/styles/production/style.min.css',
     'assets/scripts/development/*.js',
     'assets/scripts/development/_vendor/*.js'
