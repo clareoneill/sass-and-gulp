@@ -1,0 +1,3 @@
+[submodule "vanillaJSslides"]
+	path = vanillaJSslides
+	url = https://github.com/clareoneill/vanillaJSslides.git
