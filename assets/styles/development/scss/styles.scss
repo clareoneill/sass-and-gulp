@@ -1,0 +1,59 @@
+body {
+  color: #444;
+  font-weight: 300;
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+.slideshow {
+  &.loaded {
+    background: linear-gradient(to right,#B2FFFF 0,#F0E0FF 100%);
+  }
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-weight: 700;
+}
+
+small {
+  font-size: 1rem;
+}
+
+a {
+  &.active,
+  &:link,
+  &:visited {
+    color: #444;
+    border-bottom: 2px solid #444;
+  }
+
+  &:focus,
+  &:hover {
+    border-bottom: 2px solid #ccc;
+  }
+}
+
+ul,
+ol {
+  margin-top: 1rem;
+}
+
+ul {
+  list-style-type: circle;
+}
+
+li {
+  margin-bottom: 1rem;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+code {
+  font-family: 'Courier New';
+  line-height: 1.2;
+  display: inline-block;
+  background-color: #fff;
+  padding: 0 .2rem;
+}
