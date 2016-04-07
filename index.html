@@ -4,66 +4,115 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="UTF-8">
 	<title>setting up sass &amp; gulp</title>
-	<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Lato:300,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="node_modules/vanilla-js-slides/assets/styles/production/styles.min.css">
 	<link rel="stylesheet" href="assets/styles/production/styles.min.css">
 </head>
 <body>
-	<div class="wrap">
+	<div class="wrapper">
 		<div class="slideshow">
-			<div class="slide" data-count="1">
+			<div class="slide">
 				<div class="content">
 					<h1 class="tera">setting up sass &amp; gulp</h1>
 	        <p>〰</p>
-	        <h2 class="giga">step by step how-to for getting this stuff working via the command line</h2>
+	        <h2 class="giga">step by step how-to for getting this stuff working via the command line*</h2>
+	        <small>*mac-specific</small>
 				</div>
 			</div>
-			<div class="slide" data-count="2">
+			<div class="slide">
 				<div class="content">
-					<h2 class="giga">sass<br><span><a href="http://sass-lang.com/install" target="_blank">http://sass-lang.com/install</a></span></h2>
+					<h2 class="giga">install sass (<a href="http://sass-lang.com/install" target="_blank">docs</a>)</h2>
 	        <ol>
 	        	<li>install sass<br><code>sudo gem install sass</code></li>
 	        	<li>double check install<br><code>sass -v</code></li>
 	        </ol>
 				</div>
 			</div>
-			<div class="slide" data-count="3">
+			<div class="slide">
 				<div class="content">
-					<h2 class="giga">npm<br><span><a href="http://blog.npmjs.org/post/85484771375/how-to-install-npm" target="_blank">http://blog.npmjs.org/post/85484771375/how-to-install-npm</a></span></h2>
+					<h2 class="giga">install npm (<a href="http://blog.npmjs.org/post/85484771375/how-to-install-npm" target="_blank">tutorial</a>)</h2>
 	        <ol>
 	        	<li>download and install node.js (npm is included in this package) from <a href="https://nodejs.org/en/" target="_blank">https://nodejs.org/en/</a></li>
 	        	<li>once node is installed, double check npm install<br><code>sudo npm install npm -g</code></li>
 	        </ol>
 				</div>
 			</div>
-			<div class="slide" data-count="4">
+			<div class="slide">
 				<div class="content">
-					<h2 class="giga">gulp<br><span><a href="https://travismaynard.com/writing/getting-started-with-gulp" target="_blank">https://travismaynard.com/writing/getting-started-with-gulp</a></span><br><span><a href="assets/files/starter-theme.zip">&#8595; download starter theme</a></span></h2>
+					<h2 class="giga">install gulp (<a href="https://travismaynard.com/writing/getting-started-with-gulp" target="_blank">tutorial</a>)</h2>
 	        <ol>
 	        	<li>navigate to project directory (theme directory if using wordpress)<br><code>cd [project root]</code></li>
 	        	<li>start npm<br><code>npm init</code> &#8594; fill out json</li>
 	        	<li>install gulp<br><code>sudo npm install -g gulp</code></li>
 	        	<li>double check gulp install<br><code>gulp -v</code></li>
 	        	<li>save gulp to your project dependencies<br><code>npm install --save-dev gulp</code></li>
-	        	<li>install gulp plugins<br><code>sudo npm install [plugins listed, separated by spaces] --save-dev</code>
-	        		<ul>
-	        			<li>gulp-jshint &ndash; detects errors and potential problems in javascript</li>
-	        			<li>gulp-sass &ndash; compiles sass files</li>
-	        			<li>gulp-concat &ndash; concatenates files</li>
-	        			<li>gulp-uglify &ndash; minifies files with uglifyjs</li>
-	        			<li>gulp-rename &ndash; simple file renaming methods</li>
-	        			<li>gulp-minify-css &ndash; minifies css using <a href="https://github.com/jakubpawlowicz/clean-css" target="_blank">clean-css</a></li>
-	        			<li>gulp-autoprefixer &ndash; prefixes css using <a href="https://github.com/postcss/autoprefixer" target="_blank">autoprefixer</a></li>
-	        		</ul>
-	        	</li>
-	        	<li>create gulpfile.js in project root (<a href="assets/files/gulpfile.js.zip">&#8595; download gulpfile</a>)</li>
-	        	<li>run gulp<br><code>gulp watch</code></li>
 	        </ol>
 				</div>
 			</div>
-			<div class="slide" data-count="5">
+			<div class="slide">
+				<div class="content">
+					<h2 class="giga">install gulp dependencies</h2>
+					<p>install gulp plugins<br><code>sudo npm install [plugins listed, separated by spaces] --save-dev</code><p>
+					<ul>
+						<li>gulp-sass &ndash; compiles sass files</li>
+						<li>gulp-autoprefixer &ndash; prefixes css using <a href="https://github.com/postcss/autoprefixer" target="_blank">autoprefixer</a></li>
+						<li>gulp-sourcemaps &mdash; allows you to see the original source scss instead of the compiled css while debugging</li>
+						<li>gulp-minify-css &ndash; minifies css using <a href="https://github.com/jakubpawlowicz/clean-css" target="_blank">clean-css</a></li>
+						<li>gulp-jshint &ndash; detects errors and potential problems in javascript</li>
+						<li>gulp-uglify &ndash; minifies files with uglifyjs</li>
+						<li>gulp-concat &ndash; concatenates files</li>
+						<li>gulp-rename &ndash; simple file renaming methods</li>
+					</ul>
+					<p>example to copy+paste<br><code>sudo npm install gulp-sass gulp-autoprefixer gulp-sourcemaps gulp-minify-css gulp-jshint gulp-uglify gulp-concat gulp-rename --save-dev</code></p>
+				</div>
+			</div>
+			<div class="slide">
+				<div class="content">
+					<h2 class="giga">gulpfile.js</h2>
+					<p>create <code>gulpfile.js</code> in your project root (<a href="assets/files/example-gulpfile.zip">&#8595; download example gulpfile</a>)</p>
+				</div>
+			</div>
+			<div class="slide">
+				<div class="content">
+					<h2 class="giga">start gulp watch task</h2>
+					<p><code>gulp watch</code></p>
+				</div>
+			</div>
+			<div class="slide">
+				<div class="content">
+					<h2 class="giga">bonus: browser-sync (<a href="https://www.browsersync.io/" target="_blank">docs</a>)</h2>
+					<ol>
+						<li>install browser-sync<br><code>sudo npm install browser-sync --save-dev</code></li>
+						<li>include the browser-sync plugin in your gulpfile<br><code>var browserSync = require('browser-sync');</code></li>
+						<li>assign the <code>browserSync.reload</code> method to a variable called <code>reload</code><br><code>var reload = browserSync.reload;</code></li>
+					</ol>
+				</div>
+			</div>
+			<div class="slide">
+				<div class="content">
+					<h2 class="giga">bonus: browser-sync (continued)</h2>
+					<ol start="4">
+						<li>add a <code>serve</code> task to our gulpfile, replacing <code>yourlocal.dev</code> with the path to the project on your local serve<br>
+							<code>gulp.task('serve', function() {<br>
+	  					&nbsp;&nbsp;browserSync.init(watchFiles, {<br>
+	    				&nbsp;&nbsp;&nbsp;&nbsp;proxy: 'yourlocal.dev',<br>
+	    				&nbsp;&nbsp;&nbsp;&nbsp;notify: false<br>
+	  					&nbsp;&nbsp;});<br>
+							});</code>
+						</li>
+						<li>call <code>reload</code> after your scss has finished compiling to css (after the final <code>gulp.dest</code> move to production)<br><code>.pipe(reload({stream:true}));</code></li>
+						<li>start the browser-sync server<br><code>gulp serve</code></li>
+						<li>navigate to the local or external access urls provided<br>example:<br><code>Local: http://localhost:3002<br>External: http://192.168.95.139:3002</code></li>
+					</ol>
+					<p>(<a href="assets/files/example-gulpfile-browsersync.zip">&#8595; download example gulpfile with browser-sync</a>)</p>
+				</div>
+			</div>
+			<div class="slide">
 				<div class="content">
 					<h2 class="giga">notes</h2>
-	        <p>the node_modules folder shouldn't be in your git repo. since these files are handled by npm and owned by third party developers, it&rsquo;s usually added to your .gitignore file. A better workflow is to save the dependencies with <code>npm install gulp-jshint --save</code> or <code>npm install gulp-jshint --save-dev</code>. the next person to use your code the just does npm install and all dependencies are downloaded.</p>
+					<ul>
+		        <li><code>gulp serve</code> and <code>gulp watch</code> only have to run once each while you are working on a project. i recommend having them running in 2 different tabs in the same termainal window. if you need to restart at any point, quit each of the tasks with <code>control+C</code>, and restart by starting each <code>gulp</code> task again. you will have to restart the tasks any time you close the terminal windows or tabs they are running in as well.</li>
+		        <li>the <code>node_modules</code> folder should not be in included your git repo. since these files are handled by npm and owned by third party developers, the <code>node_modules</code> folder is usually added to your .gitignore file. a better workflow is to save the dependencies with <code>npm install gulp-jshint --save</code> or <code>npm install gulp-jshint --save-dev</code>. the next person to use your code the just has to run <code>npm install</code> and all dependencies will be downloaded.</li>
 	        </ul>
 				</div>
 			</div>
@@ -71,17 +120,12 @@
 
 
 		<div class="arrows">
-			<svg height="20" width="40" class="arrow right" id="arrow-right">
-			  <polygon points="20,0 40,20 0,20" />
-			  Sorry, your browser does not support inline SVG.
-			</svg>
-			<svg height="20" width="40" class="arrow left" id="arrow-left">
-			  <polygon points="20,0 40,20 0,20" />
-			  Sorry, your browser does not support inline SVG.
-			</svg>
+			<span class="left"></span>
+			<span class="right"></span>
 		</div>
+
 	</div>
 
-	<script type="text/javascript" src="assets/scripts/production/slides.min.js"></script>
+	<script type="text/javascript" src="node_modules/vanilla-js-slides/assets/scripts/production/slides.min.js"></script>
 </body>
 </html>
